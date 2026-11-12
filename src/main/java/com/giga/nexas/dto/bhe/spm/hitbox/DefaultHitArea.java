@@ -39,7 +39,7 @@ public class DefaultHitArea extends Spm.SPMHitArea {
         int bottom = Math.max(valueOrZero(minY), valueOrZero(maxY));
         int zMin = Math.min(valueOrZero(minZ), valueOrZero(maxZ));
         int zMax = Math.max(valueOrZero(minZ), valueOrZero(maxZ));
-        return buildBsdxHitArea(left, top, right, bottom, zMin, zMax, 1);
+        return buildBsdxHitArea(left, top, right, bottom, zMin, zMax, null); // PATCH(proj): kind = BHE id
     }
 
     private int valueOrZero(Integer value) {

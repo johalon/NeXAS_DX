@@ -45,12 +45,13 @@ public class CRotatableBox extends Spm.SPMHitArea {
         int cx = valueOrZero(centerX);
         int cy = valueOrZero(centerY);
         int cz = valueOrZero(centerZ);
-        int left = cx - w / 2;
-        int top = cy - h / 2;
-        int right = left + w;
-        int bottom = top + h;
-        int zMin = cz - d / 2;
-        int zMax = zMin + d;
+        // PATCH(proj): centre +- size/2 with float half truncated toward zero (matches misaki2 sou.spm)
+        int left = (int) (cx - w / 2.0);
+        int top = (int) (cy - h / 2.0);
+        int right = (int) (cx + w / 2.0);
+        int bottom = (int) (cy + h / 2.0);
+        int zMin = (int) (cz - d / 2.0);
+        int zMax = (int) (cz + d / 2.0);
         return buildBsdxHitArea(left, top, right, bottom, zMin, zMax, null);
     }
 

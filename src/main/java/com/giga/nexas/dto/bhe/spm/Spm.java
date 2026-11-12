@@ -108,7 +108,7 @@ public class Spm extends Bhe {
             rect.setRight(right);
             rect.setBottom(bottom);
             area.setHitRect(rect);
-            area.setUnk0(overrideUnk0 != null ? overrideUnk0 : mapShapeTypeForBsdx());
+            area.setUnk0(overrideUnk0 != null ? overrideUnk0 : (id != null ? (int) id : mapShapeTypeForBsdx())); // PATCH(proj): kind = BHE id
             area.setUnk1(zMin != null ? zMin : 0);
             area.setUnk2(zMax != null ? zMax : 0);
             return area;

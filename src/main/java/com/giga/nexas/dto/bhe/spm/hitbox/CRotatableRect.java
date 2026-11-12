@@ -40,10 +40,11 @@ public class CRotatableRect extends Spm.SPMHitArea {
         int h = valueOrZero(height);
         int cx = valueOrZero(centerX);
         int cy = valueOrZero(centerY);
-        int left = cx - w / 2;
-        int top = cy - h / 2;
-        int right = left + w;
-        int bottom = top + h;
+        // PATCH(proj): centre +- size/2 with float half truncated toward zero (matches misaki2 sou.spm)
+        int left = (int) (cx - w / 2.0);
+        int top = (int) (cy - h / 2.0);
+        int right = (int) (cx + w / 2.0);
+        int bottom = (int) (cy + h / 2.0);
         return buildBsdxHitArea(left, top, right, bottom, null, null, null);
     }
 

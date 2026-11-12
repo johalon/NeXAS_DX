@@ -193,7 +193,7 @@ public class CEventRadialLine extends SkillInfoObject {
 
                     if (buffer != 0 && bheUnit.getData() != null) {
                         SkillInfoObject inner = createCEventObjectByTypeBsdx(CEVENT_RADIAL_LINE_TYPES[i].getType());
-                        BeanUtil.copyProperties(bheUnit.getData(), inner);
+                        com.giga.nexas.util.ProjJsonCopy.copy(bheUnit.getData(), inner);
                         InfoCollectionMapper.copyBheToBsdx(bheUnit.getData(), inner);
                         inner.setSlotNum(CEVENT_RADIAL_LINE_TYPES[i].getType());
                         inner.typeId = CEVENT_RADIAL_LINE_TYPES[i].getType(); // 修复：恢复正确的 BSDX typeId

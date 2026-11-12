@@ -143,7 +143,7 @@ public class CEventHeight extends SkillInfoObject {
 
                 if (buffer != 0 && bheUnit.getData() != null) {
                     SkillInfoObject inner = createCEventObjectByTypeBsdx(CEVENT_HEIGHT_TYPES[i].getType());
-                    cn.hutool.core.bean.BeanUtil.copyProperties(bheUnit.getData(), inner);
+                    com.giga.nexas.util.ProjJsonCopy.copy(bheUnit.getData(), inner);
                     inner.setSlotNum(CEVENT_HEIGHT_TYPES[i].getType());
                     inner.typeId = CEVENT_HEIGHT_TYPES[i].getType(); // 修复：恢复正确的 BSDX typeId
                     bsdxUnit.setBuffer(1);

@@ -174,7 +174,7 @@ public class CEventCpuButton extends SkillInfoObject {
                         throw new OperationException(500, "CPU Button[i=0] expects CEventTerm (type 0x09).");
                     }
 
-                    BeanUtil.copyProperties(bheTerm, inner);
+                    com.giga.nexas.util.ProjJsonCopy.copy(bheTerm, inner);
                     InfoCollectionMapper.copyBheToBsdx(bheUnit.getData(), inner);
                     bsdxUnit.setBuffer(1);
                     inner.setSlotNum(CEVENT_CPU_BUTTON_ENTRIES[i].getType());

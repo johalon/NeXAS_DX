@@ -335,6 +335,7 @@ public class CEventHit extends SkillInfoObject {
             return;
         }
 
+        bsdx.setStartFrame(bhe.getStartFrame()); bsdx.setEndFrame(bhe.getEndFrame()); // PATCH(proj)
         bsdx.setAttackTargetType(bhe.getShort1());
         bsdx.setShort2(bhe.getShort2());
 
@@ -394,7 +395,7 @@ public class CEventHit extends SkillInfoObject {
                 if (buffer == null) buffer = (in.getData() != null ? 1 : 0);
                 if (buffer != 0 && in.getData() != null) {
                     SkillInfoObject inner = createCEventObjectByTypeBsdx(CEVENT_HIT_TYPES[bsdxIdx].getType());
-                    cn.hutool.core.bean.BeanUtil.copyProperties(in.getData(), inner);
+                    com.giga.nexas.util.ProjJsonCopy.copy(in.getData(), inner);
                     InfoCollectionMapper.copyBheToBsdx(in.getData(), inner);
                     if (inner instanceof CEventNokezori nokezori) {
                         nokezori.transBheCEventNokezoriToBsdx(in.getData(), nokezori);

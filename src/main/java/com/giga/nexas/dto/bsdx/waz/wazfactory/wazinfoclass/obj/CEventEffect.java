@@ -224,7 +224,7 @@ public class CEventEffect extends SkillInfoObject {
                     if (CEVENT_EFFECT_TYPES[i].getType() == 0x0
                             && bheUnit.getData() instanceof com.giga.nexas.dto.bhe.waz.wazfactory.wazinfoclass.obj.CEventFreeParam bheFree) {
 
-                        if (inner instanceof CEventVal valTarget) {
+                        if (inner instanceof CEventVal valTarget) { valTarget.setStartFrame(bheFree.getStartFrame()); valTarget.setEndFrame(bheFree.getEndFrame()); valTarget.setInt1(0); valTarget.setInt2(0); valTarget.setInt3(0); valTarget.setInt4(0); // PATCH(proj)
                             // 复制基类字段
                             valTarget.setStartFrame(bheFree.getStartFrame() != null ? bheFree.getStartFrame() : 0);
                             valTarget.setEndFrame(bheFree.getEndFrame() != null ? bheFree.getEndFrame() : 0);
@@ -245,7 +245,7 @@ public class CEventEffect extends SkillInfoObject {
                             }
                         }
                     } else {
-                        cn.hutool.core.bean.BeanUtil.copyProperties(bheUnit.getData(), inner);
+                        com.giga.nexas.util.ProjJsonCopy.copy(bheUnit.getData(), inner);
                         InfoCollectionMapper.copyBheToBsdx(bheUnit.getData(), inner);
                     }
 
